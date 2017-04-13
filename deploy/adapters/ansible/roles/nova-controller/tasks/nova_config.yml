@@ -13,6 +13,16 @@
   notify:
     - restart nova service
 
+- name: register the cell0 database
+  shell: su -s /bin/sh -c "nova-manage cell_v2 map_cell0" nova
+  notify:
+    - restart nova service
+
+- name: create the cell1 cell
+  shell: su -s /bin/sh -c "nova-manage cell_v2 create_cell --name=cell1 --verbose" nova
+  notify:
+    - restart nova service
+
 - name: nova db sync
   shell: su -s /bin/sh -c "nova-manage db sync" nova
   notify:

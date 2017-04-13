@@ -13,5 +13,5 @@ packages:
   - cinder-scheduler
 
 services:
-  - cinder-api
   - cinder-scheduler
+  - apache2

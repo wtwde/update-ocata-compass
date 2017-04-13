@@ -15,6 +15,7 @@ packages:
   - nova-novncproxy
   - nova-scheduler
   - python-oslo.rootwrap
+  - nova-placement-api
 
 services:
   - nova-api

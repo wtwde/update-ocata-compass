@@ -32,9 +32,17 @@ os_services:
     type: compute
     region: RegionOne
     description: "OpenStack Compute"
-    publicurl: "http://{{ public_vip.ip }}:8774/v2.1/%(tenant_id)s"
-    internalurl: "http://{{ internal_vip.ip }}:8774/v2.1/%(tenant_id)s"
-    adminurl: "http://{{ internal_vip.ip }}:8774/v2.1/%(tenant_id)s"
+    publicurl: "http://{{ public_vip.ip }}:8774/v2.1"
+    internalurl: "http://{{ internal_vip.ip }}:8774/v2.1"
+    adminurl: "http://{{ internal_vip.ip }}:8774/v2.1"
+
+  - name: placement
+    type: placement
+    region: RegionOne
+    description: "Placement API"
+    publicurl: "http://{{ public_vip.ip }}:8778"
+    internalurl: "http://{{ internal_vip.ip }}:8778"
+    adminurl: "http://{{ internal_vip.ip }}:8778"
 
   - name: neutron
     type: network
@@ -80,9 +88,9 @@ os_services:
     type: orchestration
     region: RegionOne
     description: "OpenStack Orchestration"
-    publicurl: "http://{{ public_vip.ip }}:8004/v1/%(tenant_id)s"
-    internalurl: "http://{{ internal_vip.ip }}:8004/v1/%(tenant_id)s"
-    adminurl: "http://{{ internal_vip.ip }}:8004/v1/%(tenant_id)s"
+    publicurl: "http://{{ public_vip.ip }}:8004/v1"
+    internalurl: "http://{{ internal_vip.ip }}:8004/v1"
+    adminurl: "http://{{ internal_vip.ip }}:8004/v1"
 
   - name: heat-cfn
     type: cloudformation
@@ -126,6 +134,13 @@ os_users:
   - user: nova
     password: "{{ NOVA_PASS }}"
     email: nova@admin.com
+    role: admin
+    tenant: service
+    tenant_description: "Service Tenant"
+
+  - user: placement
+    password: "{{ NOVA_PASS }}"
+    email: placement@admin.com
     role: admin
     tenant: service
     tenant_description: "Service Tenant"

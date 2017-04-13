@@ -18,7 +18,7 @@
 - name: start first node to create new cluster
   shell: >
     service mysql bootstrap;
-    service mysql start;
+    galera_new_cluster;
   when: |
     inventory_hostname == haproxy_hosts.keys()[0]
     and not cluster_status.stdout | search("OPERATIONAL")

@@ -12,7 +12,7 @@ default_storage_engine = InnoDB
 ##
 ## WSREP options
 ##
-
+wsrep_on = ON
 # Full path to wsrep provider library or 'none'
 wsrep_provider={{ wsrep_provider_file }}
 

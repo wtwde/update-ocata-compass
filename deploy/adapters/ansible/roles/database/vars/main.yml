@@ -28,6 +28,9 @@ credentials:
   - user: nova
     db: nova
     password: "{{ NOVA_DBPASS }}"
+  - user: nova
+    db: nova_cell0
+    password: "{{ NOVA_DBPASS }}"
   - user: cinder
     db: cinder
     password: "{{ CINDER_DBPASS }}"

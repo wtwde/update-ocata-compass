@@ -67,6 +67,15 @@
   roles:
     - ha
 
+- hosts: compute
+  remote_user: root
+  max_fail_percentage: 0
+  roles:
+    - nova-compute
+    - neutron-compute
+    - cinder-volume
+#    - ceilometer_compute
+
 - hosts: controller
   remote_user: root
   max_fail_percentage: 0
@@ -82,11 +91,11 @@
     - glance
     - neutron-common
     - neutron-network
-    - ceilometer_controller
+#    - ceilometer_controller
     - dashboard
     - heat
-    - aodh
-    - congress
+#    - aodh
+#    - congress
 
 - hosts: all
   remote_user: root
@@ -94,14 +103,14 @@
   roles:
     - storage
 
-- hosts: compute
-  remote_user: root
-  max_fail_percentage: 0
-  roles:
-    - nova-compute
-    - neutron-compute
-    - cinder-volume
-    - ceilometer_compute
+#- hosts: compute
+#  remote_user: root
+#  max_fail_percentage: 0
+#  roles:
+#    - nova-compute
+#    - neutron-compute
+#    - cinder-volume
+##    - ceilometer_compute
 
 - hosts: all
   remote_user: root
@@ -115,36 +124,36 @@
   roles:
     - secgroup
 
-- hosts: ceph_adm
-  remote_user: root
-  max_fail_percentage: 0
-  roles: []
-#    - ceph-deploy
-
-- hosts: ceph
-  remote_user: root
-  max_fail_percentage: 0
-  roles:
-    - ceph-purge
-    - ceph-config
-
-- hosts: ceph_mon
-  remote_user: root
-  max_fail_percentage: 0
-  roles:
-    - ceph-mon
-
-- hosts: ceph_osd
-  remote_user: root
-  max_fail_percentage: 0
-  roles:
-    - ceph-osd
-
-- hosts: ceph
-  remote_user: root
-  max_fail_percentage: 0
-  roles:
-    - ceph-openstack
+#- hosts: ceph_adm
+#  remote_user: root
+#  max_fail_percentage: 0
+#  roles: []
+##    - ceph-deploy
+#
+#- hosts: ceph
+#  remote_user: root
+#  max_fail_percentage: 0
+#  roles:
+#    - ceph-purge
+#    - ceph-config
+#
+#- hosts: ceph_mon
+#  remote_user: root
+#  max_fail_percentage: 0
+#  roles:
+#    - ceph-mon
+#
+#- hosts: ceph_osd
+#  remote_user: root
+#  max_fail_percentage: 0
+#  roles:
+#    - ceph-osd
+#
+#- hosts: ceph
+#  remote_user: root
+#  max_fail_percentage: 0
+#  roles:
+#    - ceph-openstack
 
 - hosts: all
   remote_user: root
